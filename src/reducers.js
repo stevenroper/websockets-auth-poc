@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { LOGIN } from './constants';
+import { LOGIN, LOGOUT } from './constants';
 
 const initialState = {
   token: '',
@@ -14,6 +14,12 @@ function loginReducer(state = initialState, action) {
 
     case LOGIN: {
       newState.isValid = true;
+      return newState;
+    }
+
+    case LOGOUT: {
+      newState.token = '';
+      newState.isValid = false;
       return newState;
     }
 
