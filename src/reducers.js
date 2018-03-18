@@ -1,10 +1,15 @@
 import { combineReducers } from 'redux';
-import { LOGIN, LOGOUT } from './constants';
+import {
+  LOGIN,
+  LOGOUT,
+  UPDATE_COUNTDOWN,
+} from './constants';
 
 const initialState = {
   token: '',
   isValid: false,
   errors: '',
+  countdown: 0,
 };
 
 function loginReducer(state = initialState, action) {
@@ -29,6 +34,12 @@ function loginReducer(state = initialState, action) {
     case LOGOUT: {
       newState.token = '';
       newState.isValid = false;
+      newState.countdown = 0;
+      return newState;
+    }
+
+    case UPDATE_COUNTDOWN: {
+      newState.countdown = action.countdown;
       return newState;
     }
 

@@ -1,4 +1,8 @@
-import { LOGIN, LOGOUT } from './constants';
+import {
+  LOGIN,
+  LOGOUT,
+  UPDATE_COUNTDOWN,
+} from './constants';
 
 export function login(username, password) {
   const data = JSON.stringify({
@@ -22,5 +26,12 @@ export function login(username, password) {
 export function logout() {
   return {
     type: LOGOUT,
+  };
+}
+
+export function updateCountdown(countdown) {
+  return {
+    type: UPDATE_COUNTDOWN,
+    countdown,
   };
 }
