@@ -7,6 +7,7 @@ import './App.css';
 
 const select = (state) => ({
   isValid: state.session.isValid,
+  errors: state.session.errors,
 });
 
 class App extends Component {
@@ -32,6 +33,7 @@ class App extends Component {
       <div className="app">
         <div className="login">
           <div className="loginHeader">{this.props.isValid ? 'Welcome' : 'Login'}</div>
+          <div className='errors'>{this.props.errors}</div>
           { this.props.isValid
               ? <div className="loginBody">
                   <div className='message'>Logged in.</div>

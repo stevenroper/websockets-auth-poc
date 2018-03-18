@@ -4,6 +4,7 @@ import { LOGIN, LOGOUT } from './constants';
 const initialState = {
   token: '',
   isValid: false,
+  errors: '',
 };
 
 function loginReducer(state = initialState, action) {
@@ -13,7 +14,15 @@ function loginReducer(state = initialState, action) {
   switch (action.type) {
 
     case LOGIN: {
-      newState.isValid = true;
+      if (action.payload.status === 200) {
+        newState.isValid = true;
+        newState.errors = '';
+        newState.token = 'faketoken';
+      }
+      else {
+        newState.errors = action.payload.statusText;
+      }
+
       return newState;
     }
 
